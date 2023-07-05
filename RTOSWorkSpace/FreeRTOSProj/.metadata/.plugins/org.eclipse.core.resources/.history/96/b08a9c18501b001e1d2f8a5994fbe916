@@ -338,15 +338,13 @@ static void MX_GPIO_Init(void)
 static void task1_handler(void* parameters)
 {
 
-	//char msg[100];
-	const TickType_t xTicksToDelay =200;
+	char msg[100];
+
 	while(1)
 	{
-		//snprintf(msg,100,"%s\n", (char*)parameters);
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_10);
-		vTaskDelay(pdMS_TO_TICKS(xTicksToDelay));
+		snprintf(msg,100,"%s\n", (char*)parameters);
 		//SEGGER_SYSVIEW_PrintfTarget(msg);
-		//taskYIELD();
+		taskYIELD();
 	}
 
 }
@@ -354,17 +352,12 @@ static void task1_handler(void* parameters)
 
 static void task2_handler(void* parameters)
 {
-	/*using vTaskDelayuntil for periodicity time */
-	TickType_t xLastWaketime;
-	const TickType_t xFrequency = 100; //100 mSec
-	//char msg[100];
-	xLastWaketime = xTaskGetTickCount();
+	char msg[100];
 	while(1)
 	{
-		//snprintf(msg,100,"%s\n", (char*)parameters);
+		snprintf(msg,100,"%s\n", (char*)parameters);
 		//SEGGER_SYSVIEW_PrintfTarget(msg);
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_2);
-		vTaskDelayUntil(&xLastWaketime,pdMS_TO_TICKS(xFrequency) );
+		taskYIELD();
 	}
 
 }

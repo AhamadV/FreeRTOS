@@ -106,3 +106,147 @@ Finished building: default.size.stdout
  
 Finished building: 001Tasks.list
  
+21:54:15 **** Incremental Build of configuration Debug for project 001Tasks ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/Config" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/SEGGER" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/OS" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "001Tasks.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\RTOSTaskProj_1\RTOSWorkSpace\FreeRTOSProj\001Tasks\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001Tasks.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 001Tasks.elf
+ 
+arm-none-eabi-objdump -h -S  001Tasks.elf  > "001Tasks.list"
+arm-none-eabi-size   001Tasks.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20732	    128	  80408	 101268	  18b94	001Tasks.elf
+Finished building: default.size.stdout
+ 
+Finished building: 001Tasks.list
+ 
+22:14:58 **** Incremental Build of configuration Debug for project 001Tasks ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/Config" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/SEGGER" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/OS" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'task1_handler':
+../Core/Src/main.c:347:14: error: 'xTicksToDelay' undeclared (first use in this function); did you mean 'xTaskAbortDelay'?
+   vTaskDelay(xTicksToDelay)
+              ^~~~~~~~~~~~~
+              xTaskAbortDelay
+../Core/Src/main.c:347:14: note: each undeclared identifier is reported only once for each function it appears in
+In file included from D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/portable.h:51:0,
+                 from D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/FreeRTOS.h:63,
+                 from ../Core/Src/main.c:27:
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h:81:5: error: expected ';' before '{' token
+     {                                                   \
+     ^
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/task.h:181:44: note: in expansion of macro 'portYIELD'
+ #define taskYIELD()                        portYIELD()
+                                            ^~~~~~~~~
+../Core/Src/main.c:349:3: note: in expansion of macro 'taskYIELD'
+   taskYIELD();
+   ^~~~~~~~~
+In file included from ../Core/Src/main.c:28:0:
+../Core/Src/main.c: In function 'task2_handler':
+../Core/Src/main.c:367:19: warning: passing argument 1 of 'xTaskDelayUntil' makes pointer from integer without a cast [-Wint-conversion]
+   vTaskDelayUntil(xLastWaketime,xFrequency );
+                   ^
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/task.h:855:31: note: in definition of macro 'vTaskDelayUntil'
+     ( void ) xTaskDelayUntil( pxPreviousWakeTime, xTimeIncrement ); \
+                               ^~~~~~~~~~~~~~~~~~
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/task.h:846:12: note: expected 'TickType_t * const {aka long unsigned int * const}' but argument is of type 'TickType_t {aka long unsigned int}'
+ BaseType_t xTaskDelayUntil( TickType_t * const pxPreviousWakeTime,
+            ^~~~~~~~~~~~~~~
+../Core/Src/main.c:360:7: warning: unused variable 'msg' [-Wunused-variable]
+  char msg[100];
+       ^~~
+make: *** [Core/Src/subdir.mk:33: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:16:46 **** Incremental Build of configuration Debug for project 001Tasks ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/Config" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/SEGGER" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/OS" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/portable.h:51:0,
+                 from D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/FreeRTOS.h:63,
+                 from ../Core/Src/main.c:27:
+../Core/Src/main.c: In function 'task1_handler':
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h:81:5: error: expected ';' before '{' token
+     {                                                   \
+     ^
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/task.h:181:44: note: in expansion of macro 'portYIELD'
+ #define taskYIELD()                        portYIELD()
+                                            ^~~~~~~~~
+../Core/Src/main.c:349:3: note: in expansion of macro 'taskYIELD'
+   taskYIELD();
+   ^~~~~~~~~
+../Core/Src/main.c:341:7: warning: unused variable 'msg' [-Wunused-variable]
+  char msg[100];
+       ^~~
+In file included from ../Core/Src/main.c:28:0:
+../Core/Src/main.c: In function 'task2_handler':
+../Core/Src/main.c:367:19: warning: passing argument 1 of 'xTaskDelayUntil' makes pointer from integer without a cast [-Wint-conversion]
+   vTaskDelayUntil(xLastWaketime,xFrequency );
+                   ^
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/task.h:855:31: note: in definition of macro 'vTaskDelayUntil'
+     ( void ) xTaskDelayUntil( pxPreviousWakeTime, xTimeIncrement ); \
+                               ^~~~~~~~~~~~~~~~~~
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include/task.h:846:12: note: expected 'TickType_t * const {aka long unsigned int * const}' but argument is of type 'TickType_t {aka long unsigned int}'
+ BaseType_t xTaskDelayUntil( TickType_t * const pxPreviousWakeTime,
+            ^~~~~~~~~~~~~~~
+../Core/Src/main.c:360:7: warning: unused variable 'msg' [-Wunused-variable]
+  char msg[100];
+       ^~~
+make: *** [Core/Src/subdir.mk:33: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+**** Build of configuration Debug for project STM32_FreeRTOS_Bin_Sema_Tasks ****
+
+Nothing to build for project STM32_FreeRTOS_Bin_Sema_Tasks
+
+**** Build of configuration Debug for project STM32_FreeRTOS_Queue_Processing ****
+
+Nothing to build for project STM32_FreeRTOS_Queue_Processing
+22:18:28 **** Incremental Build of configuration Debug for project 001Tasks ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/Config" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/SEGGER" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/OS" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'task1_handler':
+../Core/Src/main.c:341:7: warning: unused variable 'msg' [-Wunused-variable]
+  char msg[100];
+       ^~~
+../Core/Src/main.c: In function 'task2_handler':
+../Core/Src/main.c:360:7: warning: unused variable 'msg' [-Wunused-variable]
+  char msg[100];
+       ^~~
+arm-none-eabi-gcc -o "001Tasks.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\RTOSTaskProj_1\RTOSWorkSpace\FreeRTOSProj\001Tasks\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001Tasks.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 001Tasks.elf
+ 
+arm-none-eabi-objdump -h -S  001Tasks.elf  > "001Tasks.list"
+arm-none-eabi-size   001Tasks.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21564	    128	  80408	 102100	  18ed4	001Tasks.elf
+Finished building: default.size.stdout
+ 
+Finished building: 001Tasks.list
+ 
+22:18:53 **** Incremental Build of configuration Debug for project 001Tasks ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/Config" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/SEGGER" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/OS" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "001Tasks.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\RTOSTaskProj_1\RTOSWorkSpace\FreeRTOSProj\001Tasks\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001Tasks.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 001Tasks.elf
+ 
+arm-none-eabi-objdump -h -S  001Tasks.elf  > "001Tasks.list"
+arm-none-eabi-size   001Tasks.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21564	    128	  80408	 102100	  18ed4	001Tasks.elf
+Finished building: default.size.stdout
+ 
+Finished building: 001Tasks.list
+ 
+22:22:35 **** Incremental Build of configuration Debug for project 001Tasks ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/Config" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/SEGGER" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/OS" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "001Tasks.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\RTOSTaskProj_1\RTOSWorkSpace\FreeRTOSProj\001Tasks\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001Tasks.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 001Tasks.elf
+ 
+arm-none-eabi-objdump -h -S  001Tasks.elf  > "001Tasks.list"
+arm-none-eabi-size   001Tasks.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21596	    128	  80408	 102132	  18ef4	001Tasks.elf
+Finished building: default.size.stdout
+ 
+Finished building: 001Tasks.list
+ 

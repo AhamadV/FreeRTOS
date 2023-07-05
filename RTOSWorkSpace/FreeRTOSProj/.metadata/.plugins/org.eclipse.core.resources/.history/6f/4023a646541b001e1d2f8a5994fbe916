@@ -344,7 +344,7 @@ static void task1_handler(void* parameters)
 	{
 		//snprintf(msg,100,"%s\n", (char*)parameters);
 		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_10);
-		vTaskDelay(pdMS_TO_TICKS(xTicksToDelay));
+		vTaskDelay(xTicksToDelay);
 		//SEGGER_SYSVIEW_PrintfTarget(msg);
 		//taskYIELD();
 	}
@@ -364,7 +364,7 @@ static void task2_handler(void* parameters)
 		//snprintf(msg,100,"%s\n", (char*)parameters);
 		//SEGGER_SYSVIEW_PrintfTarget(msg);
 		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_2);
-		vTaskDelayUntil(&xLastWaketime,pdMS_TO_TICKS(xFrequency) );
+		vTaskDelayUntil(&xLastWaketime,xFrequency );
 	}
 
 }

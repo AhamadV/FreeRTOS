@@ -1,0 +1,28 @@
+19:10:00 **** Build of configuration Debug for project 001Tasks ****
+make -j4 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -I../ -x assembler-with-cpp --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f407vgtx.o" "../Startup/startup_stm32f407vgtx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/ThirdParty/FreeRTOS" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/Drivers/CMSIS/Include" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/ThirdParty/FreeRTOS" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/Drivers/CMSIS/Include" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/stm32f4xx_hal_msp.d" -MT"Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Src/stm32f4xx_hal_timebase_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/ThirdParty/FreeRTOS" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/Drivers/CMSIS/Include" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks" -I"D:/RTOSProj/RTOSWorkSpace/001Tasks/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/stm32f4xx_hal_timebase_tim.d" -MT"Src/stm32f4xx_hal_timebase_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/stm32f4xx_hal_timebase_tim.o"
+../Src/stm32f4xx_hal_timebase_tim.c:22:10: fatal error: stm32f4xx_hal.h: No such file or directory
+ #include "stm32f4xx_hal.h"
+          ^~~~~~~~~~~~~~~~~
+In file included from ../Src/main.c:22:0:
+D:/RTOSProj/RTOSWorkSpace/001Tasks/Inc/main.h:31:10: fatal error: stm32f4xx_hal.h: No such file or directory
+ #include "stm32f4xx_hal.h"
+          ^~~~~~~~~~~~~~~~~
+compilation terminated.
+compilation terminated.
+In file included from ../Src/stm32f4xx_hal_msp.c:23:0:
+D:/RTOSProj/RTOSWorkSpace/001Tasks/Inc/main.h:31:10: fatal error: stm32f4xx_hal.h: No such file or directory
+ #include "stm32f4xx_hal.h"
+          ^~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:33: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Src/subdir.mk:37: Src/stm32f4xx_hal_timebase_tim.o] Error 1
+make: *** [Src/subdir.mk:35: Src/stm32f4xx_hal_msp.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+19:10:03 Build Failed. 7 errors, 0 warnings. (took 3s.265ms)
+

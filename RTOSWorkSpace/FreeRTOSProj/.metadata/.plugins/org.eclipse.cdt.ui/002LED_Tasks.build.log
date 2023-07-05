@@ -1,0 +1,40 @@
+14:15:51 **** Build of configuration Debug for project 002LED_Tasks ****
+make -j4 all 
+arm-none-eabi-gcc "D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/Syscalls/SEGGER_RTT_Syscalls_GCC.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/Config" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/Workspace/RTOS_workspace/common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"D:/Workspace/RTOS_workspace/common/ThirdParty/FreeRTOS/include" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/OS" -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/SEGGER" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"common/ThirdParty/SEGGER/SEGGER/Syscalls/SEGGER_RTT_Syscalls_GCC.d" -MT"common/ThirdParty/SEGGER/SEGGER/Syscalls/SEGGER_RTT_Syscalls_GCC.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "common/ThirdParty/SEGGER/SEGGER/Syscalls/SEGGER_RTT_Syscalls_GCC.o"
+arm-none-eabi-gcc "D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/Config" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/Workspace/RTOS_workspace/common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"D:/Workspace/RTOS_workspace/common/ThirdParty/FreeRTOS/include" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/OS" -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/SEGGER" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.d" -MT"common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -c -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/Config" -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/SEGGER" -x assembler-with-cpp --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_ASM_ARMv7M.o" "D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_ASM_ARMv7M.S"
+arm-none-eabi-gcc "D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/Config" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/Workspace/RTOS_workspace/common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"D:/Workspace/RTOS_workspace/common/ThirdParty/FreeRTOS/include" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/OS" -I"D:/Workspace/RTOS_workspace/common/ThirdParty/SEGGER/SEGGER" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.d" -MT"common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.o"
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/Syscalls/SEGGER_RTT_Syscalls_GCC.c:59:10: fatal error: SEGGER_RTT.h: No such file or directory
+ #include "SEGGER_RTT.h"
+          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [common/ThirdParty/SEGGER/SEGGER/Syscalls/subdir.mk:18: common/ThirdParty/SEGGER/SEGGER/Syscalls/SEGGER_RTT_Syscalls_GCC.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.c:54:0:
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.h:260:31: error: 'SEGGER_RTT_MAX_NUM_UP_BUFFERS' undeclared here (not in a function); did you mean 'SEGGER_RTT_BUFFER_UP'?
+   SEGGER_RTT_BUFFER_UP    aUp[SEGGER_RTT_MAX_NUM_UP_BUFFERS];       // Up buffers, transferring information up from target via debug probe to host
+                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               SEGGER_RTT_BUFFER_UP
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.h:261:33: error: 'SEGGER_RTT_MAX_NUM_DOWN_BUFFERS' undeclared here (not in a function); did you mean 'SEGGER_RTT_MAX_NUM_UP_BUFFERS'?
+   SEGGER_RTT_BUFFER_DOWN  aDown[SEGGER_RTT_MAX_NUM_DOWN_BUFFERS];   // Down buffers, transferring information down from host via debug probe to target
+                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                 SEGGER_RTT_MAX_NUM_UP_BUFFERS
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.c:55:10: fatal error: SEGGER_RTT_Conf.h: No such file or directory
+ #include "SEGGER_RTT_Conf.h"
+          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.c:76:0:
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.h:260:31: error: 'SEGGER_RTT_MAX_NUM_UP_BUFFERS' undeclared here (not in a function); did you mean 'SEGGER_RTT_BUFFER_UP'?
+   SEGGER_RTT_BUFFER_UP    aUp[SEGGER_RTT_MAX_NUM_UP_BUFFERS];       // Up buffers, transferring information up from target via debug probe to host
+                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               SEGGER_RTT_BUFFER_UP
+D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.h:261:33: error: 'SEGGER_RTT_MAX_NUM_DOWN_BUFFERS' undeclared here (not in a function); did you mean 'SEGGER_RTT_MAX_NUM_UP_BUFFERS'?
+   SEGGER_RTT_BUFFER_DOWN  aDown[SEGGER_RTT_MAX_NUM_DOWN_BUFFERS];   // Down buffers, transferring information down from host via debug probe to target
+                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                 SEGGER_RTT_MAX_NUM_UP_BUFFERS
+make: *** [common/ThirdParty/SEGGER/SEGGER/subdir.mk:32: common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.o] Error 1
+make: *** [common/ThirdParty/SEGGER/SEGGER/subdir.mk:28: common/ThirdParty/SEGGER/SEGGER/SEGGER_RTT.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+14:15:53 Build Failed. 10 errors, 0 warnings. (took 2s.12ms)
+

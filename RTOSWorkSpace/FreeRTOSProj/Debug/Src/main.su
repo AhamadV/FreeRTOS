@@ -1,0 +1,10 @@
+main.c:75:5:main	56	static,ignoring_inline_asm
+main.c:137:6:SystemClock_Config	88	static
+main.c:181:13:MX_GPIO_Init	56	static
+main.c:315:6:Access_Precious_Resource	4	static
+main.c:319:13:user1	16	static
+main.c:336:13:user2	16	static
+main.c:353:13:Sender_Task	24	static
+main.c:369:13:Receiver_Task	24	static
+main.c:397:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:414:6:Error_Handler	4	static

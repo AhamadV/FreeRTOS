@@ -59,6 +59,14 @@ static void MX_GPIO_Init(void);
 static void task1_handler(void* parameters);
 static void task2_handler(void* parameters);
 static void task3_handler(void *parameters);
+static void button_handler(void* parameters);
+static void led_task(void* parameters);
+
+TaskHandle_t task1_handle;
+TaskHandle_t task2_handle;
+TaskHandle_t task3_handle;
+TaskHandle_t button_task_handle;
+TaskHandle_t led_task_handle;
 
 
 extern  void SEGGER_UART_init(uint32_t);
@@ -79,9 +87,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
-	TaskHandle_t task1_handle;
-	TaskHandle_t task2_handle;
-	TaskHandle_t task3_handle;
+
 
 	BaseType_t status;
 
@@ -130,6 +136,15 @@ int main(void)
 
   configASSERT(status == pdPASS);
 
+
+  status = xTaskCreate(button_handler, "Task-4", 500, "button task", 3, &button_task_handle);
+
+  configASSERT(status == pdPASS);
+
+  status = xTaskCreate(led_task, "Task-5", 500, "led task", 3, &led_task_handle);
+
+   configASSERT(status == pdPASS);
+
   //start the freeRTOS scheduler
   vTaskStartScheduler();
 
@@ -156,6 +171,45 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
+
+
+static void button_handler(void* parameters)
+{
+	uint8_t btn_read = 0;
+	uint8_t prev_read = 0;
+
+	while(1){
+
+		btn_read = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+
+		if(btn_read)
+		{
+			if(! prev_read)
+				xTaskNotify(led_task_handle,0,eNoAction);
+		}
+		prev_read = btn_read;
+		vTaskDelay(pdMS_TO_TICKS(10));
+
+	}
+
+}
+
+
+static void led_task(void* parameters)
+{
+	BaseType_t  status;
+		while(1)
+		{
+			status = xTaskNotifyWait(0,0,NULL,pdMS_TO_TICKS(1000));
+			if(status == pdTRUE){
+				vTaskSuspendAll();
+				xTaskResumeAll();
+				//HAL_GPIO_WritePin(GPIOD, GPIO_,GPIO_PIN_SET);
+				vTaskDelete(NULL);
+			}
+
+		}
+}
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};

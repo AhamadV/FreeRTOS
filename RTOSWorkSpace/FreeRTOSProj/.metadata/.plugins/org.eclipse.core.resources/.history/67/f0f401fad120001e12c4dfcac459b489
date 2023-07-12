@@ -27,7 +27,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-volatile BaseType_t status_button = 0;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -250,28 +249,6 @@ void SystemClock_Config(void)
   }
 }
 
-
-void button_interrupt_handler(void)
-{
-	BaseType_t pxHigherPriorityTaskWoken;
-
-	pxHigherPriorityTaskWoken = pdFALSE;
-
-
-	//traceISR_ENTER();
-	xTaskNotifyFromISR(led_task_handle,0,eNoAction,&pxHigherPriorityTaskWoken);
-
-	/* once the ISR exits, the below macro makes higher priority task which got unblocked to resume on the CPU */
-	portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
-
-	//traceISR_EXIT();
-
-	status_button = 1;
-
-}
-
-
-
 /**
   * @brief GPIO Initialization Function
   * @param None
@@ -424,7 +401,6 @@ static void task1_handler(void* parameters)
 		vTaskDelay(pdMS_TO_TICKS(xTicksToDelay));
 		//SEGGER_SYSVIEW_PrintfTarget(msg);
 		//taskYIELD();
-		switch_priority();
 	}
 
 }
@@ -443,7 +419,6 @@ static void task2_handler(void* parameters)
 		//SEGGER_SYSVIEW_PrintfTarget(msg);
 		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_2);
 		vTaskDelayUntil(&xLastWaketime,pdMS_TO_TICKS(xFrequency) );
-		switch_priority();
 	}
 
 }
@@ -458,43 +433,6 @@ static void task3_handler(void *parameters)
 	}
 
 }
-
-
-void switch_priority(void)
-{
-	UBaseType_t p1,p2;
-	xTaskHandle t1,t2,curr;
-
-	BaseType_t switch_priority = 0;
-
-	portENTER_CRITICAL();
-	if(status_button){
-		status_button = 0;
-		switch_priority = 1;
-	}
-	portEXIT_CRITICAL();
-
-	if(switch_priority){
-		//t1 = xTaskGetHandle("Task-1");
-		//t2 = xTaskGetHandle("Task-2");
-
-		p1 = uxTaskPriorityGet(t1);
-		p2 = uxTaskPriorityGet(t2);
-
-		curr = xTaskGetCurrentTaskHandle();
-
-		if(curr == t1){
-			vTaskPrioritySet(t1,p2);
-			vTaskPrioritySet(t2,p1);
-		}else{
-			vTaskPrioritySet(t2,p1);
-			vTaskPrioritySet(t1,p2);
-		}
-	}
-
-}
-
-
 
 /* USER CODE END 4 */
 

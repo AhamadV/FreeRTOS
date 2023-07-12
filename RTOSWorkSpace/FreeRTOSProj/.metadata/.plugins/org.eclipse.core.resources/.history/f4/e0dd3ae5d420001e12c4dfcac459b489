@@ -475,8 +475,8 @@ void switch_priority(void)
 	portEXIT_CRITICAL();
 
 	if(switch_priority){
-		//t1 = xTaskGetHandle("Task-1");
-		//t2 = xTaskGetHandle("Task-2");
+		t1 = xTaskGetHandle("Task-1");
+		t2 = xTaskGetHandle("Task-2");
 
 		p1 = uxTaskPriorityGet(t1);
 		p2 = uxTaskPriorityGet(t2);

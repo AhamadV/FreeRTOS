@@ -62,13 +62,17 @@ static void task2_handler(void* parameters);
 static void task3_handler(void *parameters);
 static void button_handler(void* parameters);
 static void led_task(void* parameters);
-
+static void task_500mSec_handler(void* parameters);
+static void task_750mSec_handler(void* parameters);
+void vApplicationIdleHook( void );
 TaskHandle_t task1_handle;
 TaskHandle_t task2_handle;
 TaskHandle_t task3_handle;
 TaskHandle_t button_task_handle;
 TaskHandle_t led_task_handle;
 
+TaskHandle_t task_500mSec;
+TaskHandle_t task_750mSec;
 
 extern  void SEGGER_UART_init(uint32_t);
 
@@ -138,6 +142,12 @@ int main(void)
   configASSERT(status == pdPASS);
 
 
+  status = xTaskCreate(task_500mSec_handler, "Task-3", 500, "Hello world from Task-3", 3, &task_500mSec);
+  configASSERT(status == pdPASS);
+  status = xTaskCreate(task_750mSec_handler, "Task-3", 500, "Hello world from Task-3", 3, &task_750mSec);
+  configASSERT(status == pdPASS);
+
+
   status = xTaskCreate(button_handler, "Task-4", 500, "button task", 3, &button_task_handle);
 
   configASSERT(status == pdPASS);
@@ -172,7 +182,10 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
-
+void vApplicationIdleHook( void )
+{
+	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI );
+}
 
 static void button_handler(void* parameters)
 {
@@ -211,6 +224,29 @@ static void led_task(void* parameters)
 
 		}
 }
+
+static void task_500mSec_handler(void* parameters)
+{
+	BaseType_t  status;
+		while(1)
+		{
+			HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+			vTaskDelay(pdMS_TO_TICKS(500));
+		}
+}
+
+static void task_750mSec_handler(void* parameters)
+{
+	BaseType_t  status;
+		while(1)
+		{
+			HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+			vTaskDelay(pdMS_TO_TICKS(750));
+		}
+}
+
+
+
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};

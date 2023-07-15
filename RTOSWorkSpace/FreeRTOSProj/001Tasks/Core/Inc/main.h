@@ -30,6 +30,12 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 
+#include <stdio.h>
+#include "FreeRTOS.h"
+#include "task.h"
+
+#include <queue.h>
+#include <timers.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 

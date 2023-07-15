@@ -1,43 +1,47 @@
-22:01:42 **** Incremental Build of configuration Debug for project 001Tasks ****
+12:05:24 **** Incremental Build of configuration Debug for project 001Tasks ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx -c -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/Config" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/SEGGER" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/include" -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/SEGGER/OS" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I"D:/RTOSTaskProj_1/RTOSWorkSpace/FreeRTOSProj/001Tasks/ThirdParty/FreeRTOS" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'task_500mSec_handler':
-../Core/Src/main.c:230:14: warning: unused variable 'status' [-Wunused-variable]
+../Core/Src/main.c:269:14: warning: unused variable 'status' [-Wunused-variable]
   BaseType_t  status;
               ^~~~~~
 ../Core/Src/main.c: In function 'task_750mSec_handler':
-../Core/Src/main.c:240:14: warning: unused variable 'status' [-Wunused-variable]
+../Core/Src/main.c:279:14: warning: unused variable 'status' [-Wunused-variable]
   BaseType_t  status;
               ^~~~~~
 ../Core/Src/main.c: In function 'task1_handler':
-../Core/Src/main.c:463:3: warning: implicit declaration of function 'switch_priority' [-Wimplicit-function-declaration]
+../Core/Src/main.c:502:3: warning: implicit declaration of function 'switch_priority' [-Wimplicit-function-declaration]
    switch_priority();
    ^~~~~~~~~~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:499:6: warning: conflicting types for 'switch_priority'
+../Core/Src/main.c:538:6: warning: conflicting types for 'switch_priority'
  void switch_priority(void)
       ^~~~~~~~~~~~~~~
-../Core/Src/main.c:463:3: note: previous implicit declaration of 'switch_priority' was here
+../Core/Src/main.c:502:3: note: previous implicit declaration of 'switch_priority' was here
    switch_priority();
    ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'led_effect_callback':
+../Core/Src/main.c:210:3: warning: 'id' is used uninitialized in this function [-Wuninitialized]
+   switch(id)
+   ^~~~~~
 ../Core/Src/main.c: In function 'switch_priority':
-../Core/Src/main.c:517:6: warning: 't1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+../Core/Src/main.c:556:6: warning: 't1' may be used uninitialized in this function [-Wmaybe-uninitialized]
    p1 = uxTaskPriorityGet(t1);
    ~~~^~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:518:6: warning: 't2' may be used uninitialized in this function [-Wmaybe-uninitialized]
+../Core/Src/main.c:557:6: warning: 't2' may be used uninitialized in this function [-Wmaybe-uninitialized]
    p2 = uxTaskPriorityGet(t2);
    ~~~^~~~~~~~~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "001Tasks.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\RTOSTaskProj_1\RTOSWorkSpace\FreeRTOSProj\001Tasks\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001Tasks.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: 001Tasks.elf
  
-arm-none-eabi-size   001Tasks.elf 
 arm-none-eabi-objdump -h -S  001Tasks.elf  > "001Tasks.list"
+arm-none-eabi-size   001Tasks.elf 
    text	   data	    bss	    dec	    hex	filename
-  24816	    128	  80440	 105384	  19ba8	001Tasks.elf
+  25836	    128	  80464	 106428	  19fbc	001Tasks.elf
 Finished building: default.size.stdout
  
 Finished building: 001Tasks.list
  
 
-22:01:45 Build Finished. 0 errors, 6 warnings. (took 3s.735ms)
+12:05:28 Build Finished. 0 errors, 7 warnings. (took 3s.953ms)
 

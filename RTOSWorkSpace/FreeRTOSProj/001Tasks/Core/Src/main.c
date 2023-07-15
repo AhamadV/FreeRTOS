@@ -23,9 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
-#include "FreeRTOS.h"
-#include "task.h"
+
 
 volatile BaseType_t status_button = 0;
 /* USER CODE END Includes */
@@ -65,12 +63,17 @@ static void led_task(void* parameters);
 static void task_500mSec_handler(void* parameters);
 static void task_750mSec_handler(void* parameters);
 void vApplicationIdleHook( void );
+
 TaskHandle_t task1_handle;
 TaskHandle_t task2_handle;
 TaskHandle_t task3_handle;
 TaskHandle_t button_task_handle;
 TaskHandle_t led_task_handle;
+QueueHandle_t q_data;
+QueueHandle_t q_print;
 
+TimerHandle_t  handle_led_timer[4];
+void led_effect_callback(TimerHandle_t xTimer);
 TaskHandle_t task_500mSec;
 TaskHandle_t task_750mSec;
 
@@ -88,6 +91,7 @@ extern  void SEGGER_UART_init(uint32_t);
   * @brief  The application entry point.
   * @retval int
   */
+
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -128,6 +132,16 @@ int main(void)
   //SEGGER_SYSVIEW_Conf();
 
  // SEGGER_SYSVIEW_Start();
+  	q_data = xQueueCreate (10, sizeof(char));
+
+	configASSERT(q_data != NULL);
+
+	q_print = xQueueCreate (10, sizeof(size_t));
+
+	configASSERT(q_print != NULL);
+
+	//for(int i = 0 ; i < 4 ; i++)
+	//		handle_led_timer[i] = xTimerCreate("led_timer",pdMS_TO_TICKS(500),pdTRUE, (void*)(i+1),led_effect_callback);
 
   status = xTaskCreate(task1_handler, "Task-1", 200, "Hello world from Task-1", 2, &task1_handle);
 
@@ -186,6 +200,31 @@ void vApplicationIdleHook( void )
 {
 	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI );
 }
+
+
+void led_effect_callback(TimerHandle_t xTimer)
+{
+	 int id;
+	 //id = ( uint32_t ) pvTimerGetTimerID( xTimer );
+
+	 switch(id)
+	 {
+	 case 1 :
+		 //LED_effect1();
+		 break;
+	 case 2:
+		 //LED_effect2();
+		 break;
+	 case 3:
+		// LED_effect3();
+		 break;
+	 case 4:break;
+		 //LED_effect4();
+	 }
+
+
+}
+
 
 static void button_handler(void* parameters)
 {
